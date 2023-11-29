@@ -34,7 +34,7 @@ public class MyArrayList<T> {
     }
 
     public void add(T obj, int index) {
-    if( index < baza.length){
+    if(index > -1 && index < baza.length){
         baza[index] = obj; //Overwrites already existing obj, doesn't care if is empty or not.
     }
 
@@ -42,8 +42,8 @@ public class MyArrayList<T> {
 
 
     public boolean isEmpty() {
-        for (int i = 0; i < baza.length; i++) {
-            if (baza[i] != null) {
+        for (Object o : baza) {
+            if (o != null) {
                 return false;
             }
         }
@@ -51,11 +51,7 @@ public class MyArrayList<T> {
     }
 
     public void remove(int index) {
-        if (baza[index] == null) {
-            System.out.println("Pos: " + index + " is already empty.");
-        } else {
-
-            System.out.println("Removed item: " + baza[index] + " at pos: " + index + ".");
+        if(index > -1 && index < baza.length) {
             baza[index] = null;
         }
     }

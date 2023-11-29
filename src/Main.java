@@ -2,22 +2,14 @@ public class Main {
     public static void main(String[] args) {
 
 
-        MyArrayList<String> test = new MyArrayList<>(5);
+        MyArrayList<Integer> test = new MyArrayList<>(5);
         System.out.println(test.isEmpty());
-        test.add("asd");
-        System.out.println(test.isEmpty());
-        test.add("a");
-        test.add("5");
-
+        test.add(1);
+        test.add(2,1);
         test.printIt();
-        test.remove("5");
-        test.add("555");
-        test.add("b");
-        test.add("g");
-        test.add("b");
-        test.add("g");
+        test.remove(3);
+        test.remove(Integer.valueOf(1));
         test.printIt();
-
 
 
     }
