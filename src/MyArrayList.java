@@ -43,11 +43,11 @@ public class MyArrayList<T> {
 
     public Object get(int index) {
         if (index > -1 && index < theArray.length) {
-            if (theArray[index] == null) {
-                return null;
+            if (isFilled[index]) {
+                return theArray[index];
             }
         }
-        return theArray[index];
+        return null;
     }
 
     public boolean isEmpty() {
@@ -99,28 +99,22 @@ public class MyArrayList<T> {
     //todo: ugly naming(personal opinion). This may be a toString implementation(read about it or ask me).
     public String toString() {
         StringBuilder stringValue = new StringBuilder("The Array has: ");
+        StringBuilder testValue = new StringBuilder("Filled pos: ");
+        String isFullValue = "String is full: " + isFull() + ". \n";
+        String isEmptyValue = "String is empty: " + isEmpty() + ". \n";
         for (int i = 0; i < theArray.length; i++) {
             if (i == theArray.length - 1) {
-                stringValue.append(theArray[i]).append(".");
+                stringValue.append(theArray[i]).append(".\n");
+                testValue.append(isFilled[i]).append(". \n");
                 break;
             }
             stringValue.append(theArray[i]).append(", ");
-        }
-
-        return stringValue.toString();
-    }
-
-    public String testmethod() {
-        StringBuilder testValue = new StringBuilder("Filled pos: ");
-        for (int i = 0; i < isFilled.length; i++) {
-            if (i == isFilled.length - 1) {
-                testValue.append(isFilled[i]).append(".");
-                break;
-            }
             testValue.append(isFilled[i]).append(", ");
+
         }
-        return testValue.toString();
 
-
+        return stringValue.toString() + testValue.toString() + isEmptyValue + isFullValue;
     }
+
+
 }

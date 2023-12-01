@@ -6,23 +6,28 @@ public class Main {
         System.out.println(test.isEmpty());
         test.add(null);
         System.out.println(test);
-        System.out.println(test.testmethod());
+
         test.add(6);
         System.out.println(test);
-        System.out.println(test.testmethod());
+
         test.remove(0);
         System.out.println(test);
-        System.out.println(test.testmethod());
+
         test.add(2);
         test.add(7);
         test.add(null);
         System.out.println(test);
-        System.out.println(test.testmethod());
+
         test.add(null);
         test.add(34);
+        test.remove(3);
+
         System.out.println(test);
-        System.out.println(test.testmethod());
         System.out.println(test.isFull());
         System.out.println(test.isEmpty());
+
+        System.out.println((int)test.get(2)+5);
+        System.out.println((int)test.get(2)-5);
+        System.out.println((int)test.get(3)+5);
     }
 }
