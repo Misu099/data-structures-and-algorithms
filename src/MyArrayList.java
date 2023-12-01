@@ -3,46 +3,65 @@ import java.util.Arrays;
 public class MyArrayList<T> {
 
     private final int DEFAULT_SIZE = 10;
-    private Object[] baza; //todo: only english
-    private Object[] helper;
-    private int size = 0;
+    private Object[] theArray;
+    private boolean[] isFilled;
+    private int size;
     private int nextPos;
 
 
     public MyArrayList() {
-        baza = new Object[DEFAULT_SIZE];
+        theArray = new Object[DEFAULT_SIZE];
+        isFilled = new boolean[DEFAULT_SIZE];
         size = DEFAULT_SIZE;
     }
 
     public MyArrayList(int size) {
         this.size = size;
-        baza = new Object[size];
+        theArray = new Object[size];
+        isFilled = new boolean[size];
     }
 
     public void add(T obj) {
-        if (nextPos >= baza.length - 1) {
-            setSize(baza.length + 1);
+        if (isFull()) {
+            setSize(theArray.length + 1);
         }
-        while (true) {
-            if (baza[nextPos] == null) {
-                baza[nextPos] = obj;
+        for (int i = 0; i < isFilled.length; i++) {
+            if (!isFilled[i]) {
+                theArray[i] = obj;
+                isFilled[i] = true;
                 break;
             }
-            nextPos++;
         }
     }
 
     public void add(T obj, int index) {
-        if (index > -1 && index < baza.length) {
-            baza[index] = obj; //Overwrites already existing obj, doesn't care if is empty or not.
+        if (index > -1 && index < theArray.length) {
+            theArray[index] = obj;
+            isFilled[index] = true;
         }
-
     }
 
+    public Object get(int index) {
+        if (index > -1 && index < theArray.length) {
+            if (theArray[index] == null) {
+                return null;
+            }
+        }
+        return theArray[index];
+    }
 
     public boolean isEmpty() {
-        for (Object o : baza) {
-            if (o != null) {
+        for (boolean aBoolean : isFilled) {
+            if (aBoolean) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isFull() {
+        for (boolean aBoolean : isFilled) {
+            if (!aBoolean) {
                 return false;
             }
         }
@@ -50,51 +69,58 @@ public class MyArrayList<T> {
     }
 
     public void remove(int index) {
-        if (index > -1 && index < baza.length) {
-            baza[index] = null;
+        if (index > -1 && index < theArray.length) {
+            theArray[index] = null;
+            isFilled[index] = false;
         }
     }
 
-
     public void remove(T obj) {
-        for (int i = 0; i < baza.length; i++) {
-            if (baza[i] != null && baza[i].equals(obj)) {
-                baza[i] = null;
-                System.out.println("Removed item: " + obj.toString() + " at pos: " + i + "."); //obj.toString will not return what you probably expect
-                break;
-            }
-            if (i == baza.length - 1) {
-                System.out.println("Item: " + obj.toString() + " is not present!");
+        for (int i = 0; i < theArray.length; i++) {
+            if (theArray[i] != null && theArray[i].equals(obj)) {
+                theArray[i] = null;
+                isFilled[i] = false;
+                return;
             }
         }
-
     }
 
     public int getSize() {
-        return baza.length;
+        return theArray.length;
     }
 
     //todo: this method should be rather private and be used just to change the size of array when needed
-    public void setSize(int size) {
-        baza = Arrays.copyOf(baza, size);
-        int losingItems = this.size - size; //bad naming
-        if (losingItems > 0) {
-            System.out.println("Lost: " + losingItems + " items");
-        }
+    private void setSize(int size) {
+        theArray = Arrays.copyOf(theArray, size);
+        isFilled = Arrays.copyOf(isFilled, size);
         this.size = size;
     }
 
     //todo: ugly naming(personal opinion). This may be a toString implementation(read about it or ask me).
-    public void printIt() {
-        System.out.print("Baza are: ");  //todo: english please
-        for (int i = 0; i < baza.length; i++) {
-            if (i == baza.length - 1) {
-                System.out.print(baza[i] + ".");
+    public String toString() {
+        StringBuilder stringValue = new StringBuilder("The Array has: ");
+        for (int i = 0; i < theArray.length; i++) {
+            if (i == theArray.length - 1) {
+                stringValue.append(theArray[i]).append(".");
                 break;
             }
-            System.out.print(baza[i] + ", ");
+            stringValue.append(theArray[i]).append(", ");
         }
-        System.out.println();
+
+        return stringValue.toString();
     }
 
+    public String testmethod() {
+        StringBuilder testValue = new StringBuilder("Filled pos: ");
+        for (int i = 0; i < isFilled.length; i++) {
+            if (i == isFilled.length - 1) {
+                testValue.append(isFilled[i]).append(".");
+                break;
+            }
+            testValue.append(isFilled[i]).append(", ");
+        }
+        return testValue.toString();
+
+
+    }
 }
