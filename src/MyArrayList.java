@@ -6,7 +6,6 @@ public class MyArrayList<T> {
     private Object[] theArray;
     private boolean[] isFilled;
     private int size;
-    private int nextPos;
 
 
     public MyArrayList() {
@@ -112,7 +111,6 @@ public class MyArrayList<T> {
             testValue.append(isFilled[i]).append(", ");
 
         }
-
         return stringValue.toString() + testValue.toString() + isEmptyValue + isFullValue;
     }
 
