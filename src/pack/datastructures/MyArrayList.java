@@ -37,20 +37,17 @@ public class MyArrayList<T> {
                 theArray[index] = obj;
                 size++;
             }
-        }catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("It can only override already filled positions.");
         }
-
-
     }
 
     public Object get(int index) {
         if (index > -1 && index < size) {
             return theArray[index];
-        }else{
+        } else {
             throw new ArrayIndexOutOfBoundsException("It can iterate only over the elements you added.");
         }
-
     }
 
 
@@ -79,7 +76,8 @@ public class MyArrayList<T> {
                     theArray[j] = theArray[j + 1];
                 }
                 size--;
-                theArray = Arrays.copyOf(theArray,size);
+                theArray = Arrays.copyOf(theArray, size);
+                break;
             }
         }
     }
@@ -87,7 +85,7 @@ public class MyArrayList<T> {
 
     //todo: this method should be rather private and be used just to change the size of array when needed
     private void resize() {
-        theArray = Arrays.copyOf(theArray, theArray.length + 2);
+        theArray = Arrays.copyOf(theArray, theArray.length + 1);
     }
 
     //todo: ugly naming(personal opinion). This may be a toString implementation(read about it or ask me).

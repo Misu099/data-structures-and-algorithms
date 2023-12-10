@@ -7,6 +7,10 @@ public class Main {
 MyArrayList<String> test = new MyArrayList<>(2);
 test.add("asd");
 test.add("cal");
+test.add("asd");
+
+        test.add("cal");
+        test.add("cal");
         System.out.println(test.toString());
 for (int i = 2; i< 6; i++){
     test.add("a" + i);
@@ -14,9 +18,10 @@ for (int i = 2; i< 6; i++){
 }
         System.out.println(test.toString());
 test.remove("a5");
+
+        System.out.println(test.toString());
 test.remove("cal");
         System.out.println(test.toString());
-
 
     }
 
