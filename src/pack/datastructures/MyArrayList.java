@@ -78,6 +78,8 @@ public class MyArrayList<T> {
                 size--;
                 theArray = Arrays.copyOf(theArray, size);
                 break;
+
+
             }
         }
     }
