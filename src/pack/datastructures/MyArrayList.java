@@ -19,7 +19,7 @@ public class MyArrayList<T> {
     }
 
     public void add(T obj) {
-        if (size >= theArray.length) {
+        if (isFull()) {
             resize();
         }
         for (int i = size; i < theArray.length; i++) {
@@ -32,17 +32,17 @@ public class MyArrayList<T> {
     }
 
     public void add(T obj, int index) {
-        try {
-            //You are already verifying if the index is out of bounds, so no ArrayIndexOutOfBoundsException can be thrown here
-            //TODO: Remove try catch block and add an else block in witch you throw a new ArrayIndexOutOfBoundsException
-            if (index > -1 && index < size) {
-                theArray[index] = obj;
-                size++;
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("It can only override already filled positions.");
+
+        //You are already verifying if the index is out of bounds, so no ArrayIndexOutOfBoundsException can be thrown here
+        //TODO: Remove try catch block and add an else block in witch you throw a new ArrayIndexOutOfBoundsException
+        //done
+        if (index > -1 && index < size) {
+            theArray[index] = obj;
+        } else {
+            throw new ArrayIndexOutOfBoundsException("It can only override already filled positions.");
         }
     }
+
 
     public Object get(int index) {
         if (index > -1 && index < size) {
@@ -52,13 +52,33 @@ public class MyArrayList<T> {
         }
     }
 
-    //TODO: Write a get(obj) method and a private search method to see if the array exist in the array and get its index. Use it inside of remove method too
+    //TODO: Write a get(obj) method and a private search method to see if the array exist in the array and get its index. Use it inside of remove method too;
+     //done
+
+    public Object get(T obj) {
+        try {
+            return theArray[search(obj)];
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println("Item not present");
+        }
+        throw new ArrayIndexOutOfBoundsException("Out of bounds");
+    }
+
+    private int search(T obj) {
+        for (int i = 0; i < size; i++) {
+            if (theArray[i] != null && theArray[i] == obj) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
     public boolean isEmpty() {
         return size == 0;
     }
 
-    //This will be useless, as it will return true everytime after the initial capacity is reached
+    //This will be useless, as it will return true everytime after the initial capacity is reached;
+    // but i need it on add()
     public boolean isFull() {
         return size == theArray.length;
     }
@@ -69,25 +89,18 @@ public class MyArrayList<T> {
                 theArray[i] = theArray[i + 1];
             }
             size--;
-            theArray = Arrays.copyOf(theArray, size); //TODO: don't need to resize the array wen shrinking, maybe only the differences are big
+            theArray = Arrays.copyOf(theArray, size); //TODO: don't need to resize the array when shrinking, maybe only the differences are big
+            // but we discussed it and you said that will be ok to not have nulls at the tail, and so to have only user inserted nulls
         }
     }
 
     public void remove(T obj) {
-        for (int i = 0; i < theArray.length; i++) {
-            if (theArray[i] != null && theArray[i].equals(obj)) { //TODO: replace with theArray[i] == obj. You need to remove the object in case it is null too
-                for (int j = i; j < theArray.length - 1; j++) {  //This is the second place
-                    theArray[j] = theArray[j + 1];
-                }
-                size--;
-                theArray = Arrays.copyOf(theArray, size); //TODO: don't need to resize the array wen shrinking, maybe only the differences are big
-                break;
-            }
-        }
+        remove(search(obj));
     }
 
+
     private void resize() {
-        theArray = Arrays.copyOf(theArray, theArray.length + 1);
+        theArray = Arrays.copyOf(theArray, theArray.length + 1); //not very efficient, but it will not have nulls at tail;
     }
 
     public String toString() {

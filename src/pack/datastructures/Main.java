@@ -4,28 +4,19 @@ package pack.datastructures;
 public class Main {
     public static void main(String[] args) {
 
-MyArrayList<String> test = new MyArrayList<>(2);
-test.add("asd");
-test.add("cal");
-test.add("asd");
-
-        test.add("cal");
-        test.add("cal");
+        MyArrayList<String> test = new MyArrayList<>(2);
+        test.add("a");
+        test.add("b");
+        test.add("B", 1);
         System.out.println(test.toString());
-for (int i = 2; i< 6; i++){
-    test.add("a" + i);
-
-}
+        test.add("c");
+        test.add("d");
         System.out.println(test.toString());
-test.remove("a5");
-
-        System.out.println(test.toString());
-test.remove("cal");
+        test.remove("a");
+        test.remove(2);
         System.out.println(test.toString());
 
     }
-
-
 
 
 }
