@@ -53,7 +53,7 @@ public class MyArrayList<T> {
     }
 
     //TODO: Write a get(obj) method and a private search method to see if the array exist in the array and get its index. Use it inside of remove method too;
-     //done
+    //done
 
     public Object get(T obj) {
         try {
@@ -66,7 +66,7 @@ public class MyArrayList<T> {
 
     private int search(T obj) {
         for (int i = 0; i < size; i++) {
-            if (theArray[i] != null && theArray[i] == obj) {
+            if (theArray[i] == obj) {
                 return i;
             }
         }
