@@ -78,10 +78,8 @@ public class MyArrayList<T> {
         return size == 0;
     }
 
-    //This will be useless, as it will return true everytime after the initial capacity is reached;
-    // but i need it on add()
     public boolean isFull() {
-        return size == theArray.length;
+        return size >= theArray.length;
     }
 
     public void remove(int index) {
@@ -90,8 +88,6 @@ public class MyArrayList<T> {
                 theArray[i] = theArray[i + 1];
             }
             size--;
-            // theArray = Arrays.copyOf(theArray, size); //TODO: don't need to resize the array when shrinking, maybe only the differences are big
-            // but we discussed it and you said that will be ok to not have nulls at the tail, and so to have only user inserted nulls
         }
     }
 
@@ -101,7 +97,7 @@ public class MyArrayList<T> {
 
 
     private void resize() {
-        theArray = Arrays.copyOf(theArray, theArray.length + 1); //not very efficient, but it will not have nulls at tail;
+        theArray = Arrays.copyOf(theArray, theArray.length + 5);
     }
 
     public String toString() {
