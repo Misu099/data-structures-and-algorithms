@@ -90,7 +90,7 @@ public class MyArrayList<T> {
                 theArray[i] = theArray[i + 1];
             }
             size--;
-            theArray = Arrays.copyOf(theArray, size); //TODO: don't need to resize the array when shrinking, maybe only the differences are big
+            // theArray = Arrays.copyOf(theArray, size); //TODO: don't need to resize the array when shrinking, maybe only the differences are big
             // but we discussed it and you said that will be ok to not have nulls at the tail, and so to have only user inserted nulls
         }
     }
