@@ -14,8 +14,9 @@ public class Main {
         list.add(new Dogs("Costel", 7));
         list.add(new Dogs("Ninel", 1));
 
-
-        System.out.println(test.sort(list));
+        System.out.println(list);
+        test.sort(list);
+        System.out.println(list);
 
 
     }

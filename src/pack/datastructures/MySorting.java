@@ -3,27 +3,26 @@ package pack.datastructures;
 import java.util.ArrayList;
 
 public class MySorting<T extends Comparable<T>> {
-    ArrayList<T> output;
-    T temp;
+
 
     public MySorting() {
 
     }
 
 
-    public ArrayList<T> sort(ArrayList<T> input) {
-        output = input;
-        for (int k = 0; k < output.size() - 1; k++) {
-            for (int i = 0; i < output.size() - 1; i++) {
-                if ((output.get(i).compareTo(output.get(i + 1)) > 0)) {
-                    temp = output.get(i);
-                    output.set(i, output.get(i + 1));
-                    output.set(i + 1, temp);
+    public void sort(ArrayList<T> list) {
+        T temp;
+
+        for (int k = 0; k < list.size() - 1; k++) {
+            for (int i = 0; i < list.size() - 1; i++) {
+                if ((list.get(i).compareTo(list.get(i + 1)) > 0)) {
+                    temp = list.get(i);
+                    list.set(i, list.get(i + 1));
+                    list.set(i + 1, temp);
                 }
             }
         }
 
-        return output;
     }
 
 }

@@ -18,8 +18,8 @@ public class Dogs implements Comparable<Dogs> {
 
     @Override
     public int compareTo(Dogs dog) {
-        return this.name.compareTo(dog.name);
-        // return Integer.compare(this.size, dog.size);
+       // return this.name.compareTo(dog.name);
+         return Integer.compare(this.size, dog.size);
     }
 
 
