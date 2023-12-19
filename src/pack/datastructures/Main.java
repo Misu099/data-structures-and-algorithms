@@ -1,20 +1,22 @@
 package pack.datastructures;
 
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
-        MyArrayList<String> test = new MyArrayList<>(2);
-        test.add("a");
-        test.add("b");
-        test.add("B", 1);
-        System.out.println(test.toString());
-        test.add("c");
-        test.add("d");
-        System.out.println(test.toString());
-        test.remove("a");
-        test.remove(2);
-        System.out.println(test.toString());
+        MySorting<Dogs> test = new MySorting<>();
+        ArrayList<Dogs> list = new ArrayList<>(5);
+        list.add(new Dogs("Gica", 23));
+        list.add(new Dogs("Fanel", 232));
+        list.add(new Dogs("Sandel", 5));
+        list.add(new Dogs("Costel", 7));
+        list.add(new Dogs("Ninel", 1));
+
+
+        System.out.println(test.sort(list));
+
 
     }
 
