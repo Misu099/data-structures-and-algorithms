@@ -31,7 +31,8 @@ public class MyArrayList<T> implements Serializable {
             }
         }
     }
-    public int getSize(){
+
+    public int getSize() {
         return size;
     }
 
