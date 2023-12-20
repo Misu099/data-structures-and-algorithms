@@ -26,7 +26,6 @@ public class Main {
 
         MySorting sorter = new MySorting<>();
         ArrayList<Dogs> anArrayList = new ArrayList<>();
-        System.out.println(recoveredListOfDogs.getSize());
 
         for (int i = 0; i < recoveredListOfDogs.getSize(); i++){
             anArrayList.add((Dogs) recoveredListOfDogs.get(i));
