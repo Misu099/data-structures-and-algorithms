@@ -39,6 +39,14 @@ public class Main {
         System.out.println(anArrayList);
         sorter.sort(anArrayList);
         System.out.println(anArrayList);
+        anArrayList.get(0).eat(49);
+        anArrayList.get(0).eat(49);
+        anArrayList.get(0).eat(49);
+        anArrayList.get(0).eat(49);
+        anArrayList.get(0).eat(49);
+        anArrayList.get(0).eat(49);
+        sorter.sort(anArrayList);
+        System.out.println(anArrayList);
 
     }
 
