@@ -1,8 +1,9 @@
 package pack.datastructures;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class MyArrayList<T> {
+public class MyArrayList<T> implements Serializable {
 
     private static final int DEFAULT_SIZE = 10;
     private Object[] theArray;
@@ -29,6 +30,9 @@ public class MyArrayList<T> {
                 break;
             }
         }
+    }
+    public int getSize(){
+        return size;
     }
 
     public void add(T obj, int index) {

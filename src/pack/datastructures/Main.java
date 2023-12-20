@@ -6,18 +6,40 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 
-        MySorting<Dogs> test = new MySorting<>();
-        ArrayList<Dogs> list = new ArrayList<>(5);
-        list.add(new Dogs("Gica", 23));
-        list.add(new Dogs("Fanel", 232));
-        list.add(new Dogs("Sandel", 5));
-        list.add(new Dogs("Costel", 7));
-        list.add(new Dogs("Ninel", 1));
+        MyArrayList<Dogs> listOfDogs = new MyArrayList<>(5);
+        listOfDogs.add(new Dogs("Gica", 23));
+        listOfDogs.add(new Dogs("Fanel", 232));
+        listOfDogs.add(new Dogs("Sandel", 5));
+        listOfDogs.add(new Dogs("Costel", 7));
+        listOfDogs.add(new Dogs("Ninel", 1));
 
-        System.out.println(list);
-        test.sort(list);
-        System.out.println(list);
+        System.out.println(listOfDogs);
+        MySerializer serIt = new MySerializer();
+        serIt.mySerialize(listOfDogs, "test.ser");
+        MyArrayList<Dogs> recoveredListOfDogs = serIt.myDeserialize("test.ser");
+        System.out.println(recoveredListOfDogs);
 
+
+        Dogs aDog = (Dogs) recoveredListOfDogs.get(0);
+        aDog.eat(7);
+        System.out.println(aDog);
+
+        MySorting sorter = new MySorting<>();
+        ArrayList<Dogs> anArrayList = new ArrayList<>();
+        System.out.println(recoveredListOfDogs.getSize());
+
+        for (int i = 0; i < recoveredListOfDogs.getSize(); i++){
+            anArrayList.add((Dogs) recoveredListOfDogs.get(i));
+        }
+        System.out.println(anArrayList);
+        anArrayList.get(0).eat(5);
+        System.out.println(anArrayList);
+        sorter.sort(anArrayList);
+        System.out.println(anArrayList);
+        anArrayList.get(0).eat(40);
+        System.out.println(anArrayList);
+        sorter.sort(anArrayList);
+        System.out.println(anArrayList);
 
     }
 

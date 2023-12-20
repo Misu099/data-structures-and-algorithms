@@ -9,7 +9,6 @@ public class MySorting<T extends Comparable<T>> {
 
     }
 
-
     public void sort(ArrayList<T> list) {
         T temp;
 
@@ -22,7 +21,7 @@ public class MySorting<T extends Comparable<T>> {
                 }
             }
         }
-
     }
+
 
 }
