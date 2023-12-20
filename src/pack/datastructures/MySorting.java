@@ -3,12 +3,11 @@ package pack.datastructures;
 import java.util.ArrayList;
 
 public class MySorting<T extends Comparable<T>> {
-
-
     public MySorting() {
-
+        // This constructor is made automatically by compiler
     }
 
+    //todo: this method may be static and the syntax for type of T will be a little more complicated
     public void sort(ArrayList<T> list) {
         T temp;
 
@@ -22,6 +21,4 @@ public class MySorting<T extends Comparable<T>> {
             }
         }
     }
-
-
 }

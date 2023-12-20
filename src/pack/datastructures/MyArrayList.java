@@ -38,9 +38,6 @@ public class MyArrayList<T> implements Serializable {
 
     public void add(T obj, int index) {
 
-        //You are already verifying if the index is out of bounds, so no ArrayIndexOutOfBoundsException can be thrown here
-        //TODO: Remove try catch block and add an else block in witch you throw a new ArrayIndexOutOfBoundsException
-        //done
         if (index > -1 && index < size) {
             theArray[index] = obj;
         } else {
@@ -51,18 +48,16 @@ public class MyArrayList<T> implements Serializable {
 
     public Object get(int index) {
         if (index > -1 && index < size) {
-            return theArray[index];
+            return theArray[index]; // HERE! you are returning an Object, not a T
         } else {
             throw new ArrayIndexOutOfBoundsException("It can iterate only over the elements you added.");
         }
     }
 
-    //TODO: Write a get(obj) method and a private search method to see if the array exist in the array and get its index. Use it inside of remove method too;
-    //done
-
+    // ??????? WTF is this???!!!
     public Object get(T obj) {
         try {
-            return theArray[search(obj)];
+            return theArray[search(obj)]; // Same here
         } catch (ArrayIndexOutOfBoundsException ex) {
             System.out.println("Item not present");
         }
