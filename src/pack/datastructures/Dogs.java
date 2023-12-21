@@ -14,7 +14,7 @@ public class Dogs implements Comparable<Dogs>, Serializable {
 
 
     public void eat(int quantity) {
-        if (quantity > 0 && quantity < 50) {
+        if (quantity > 0 && quantity < 500) {
             this.size += quantity;
         }
     }

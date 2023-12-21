@@ -7,9 +7,7 @@ public class MyArrayList<T> implements Serializable {
 
     private static final int DEFAULT_SIZE = 10;
     private Object[] theArray;
-
     private int size = 0;
-
 
     public MyArrayList() {
         theArray = new Object[DEFAULT_SIZE];
@@ -18,6 +16,7 @@ public class MyArrayList<T> implements Serializable {
     public MyArrayList(int s) {
         theArray = new Object[s];
     }
+
 
     public void add(T obj) {
         if (isFull()) {
@@ -32,12 +31,13 @@ public class MyArrayList<T> implements Serializable {
         }
     }
 
+
     public int getSize() {
         return size;
     }
 
-    public void add(T obj, int index) {
 
+    public void add(T obj, int index) {
         if (index > -1 && index < size) {
             theArray[index] = obj;
         } else {
@@ -46,23 +46,23 @@ public class MyArrayList<T> implements Serializable {
     }
 
 
-    public Object get(int index) {
+    public T get(int index) {
         if (index > -1 && index < size) {
-            return theArray[index]; // HERE! you are returning an Object, not a T
+            return (T) theArray[index]; // HERE! you are returning an Object, not a T
         } else {
             throw new ArrayIndexOutOfBoundsException("It can iterate only over the elements you added.");
         }
     }
 
+
     // ??????? WTF is this???!!!
-    public Object get(T obj) {
-        try {
-            return theArray[search(obj)]; // Same here
-        } catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println("Item not present");
+    public T get(T obj) {
+        if (search(obj) >= 0) {
+            return (T) theArray[search(obj)]; // Same here
         }
-        throw new ArrayIndexOutOfBoundsException("Out of bounds");
+        throw new NullPointerException("Object not present");
     }
+
 
     private int search(T obj) {
         for (int i = 0; i < size; i++) {
@@ -78,9 +78,11 @@ public class MyArrayList<T> implements Serializable {
         return size == 0;
     }
 
+
     public boolean isFull() {
         return size >= theArray.length;
     }
+
 
     public void remove(int index) {
         if (index > -1 && index < size) {
@@ -91,14 +93,18 @@ public class MyArrayList<T> implements Serializable {
         }
     }
 
+
     public void remove(T obj) {
-        remove(search(obj));
+        if (search(obj) >= 0) {
+            remove(search(obj));
+        }
     }
 
 
     private void resize() {
         theArray = Arrays.copyOf(theArray, theArray.length + 5);
     }
+
 
     public String toString() {
         StringBuilder stringValue = new StringBuilder("The Array has: ");

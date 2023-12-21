@@ -14,39 +14,16 @@ public class Main {
         listOfDogs.add(new Dogs("Ninel", 1));
 
         System.out.println(listOfDogs);
-        MySerializer serIt = new MySerializer();
-        serIt.mySerialize(listOfDogs, "test.ser");
-        MyArrayList<Dogs> recoveredListOfDogs = serIt.myDeserialize("test.ser");
-        System.out.println(recoveredListOfDogs);
+
+       MySorting.sortMy(listOfDogs);
+        System.out.println(listOfDogs);
+        listOfDogs.get(0).eat(100);
+        listOfDogs.get(1).eat(200);
+        MySorting.sortMy(listOfDogs);
+        System.out.println(listOfDogs);
 
 
-        Dogs aDog = (Dogs) recoveredListOfDogs.get(0);
-        aDog.eat(7);
-        System.out.println(aDog);
 
-        MySorting sorter = new MySorting<>();
-        ArrayList<Dogs> anArrayList = new ArrayList<>();
-
-        for (int i = 0; i < recoveredListOfDogs.getSize(); i++) {
-            anArrayList.add((Dogs) recoveredListOfDogs.get(i));
-        }
-        System.out.println(anArrayList);
-        anArrayList.get(0).eat(5);
-        System.out.println(anArrayList);
-        sorter.sort(anArrayList);
-        System.out.println(anArrayList);
-        anArrayList.get(0).eat(40);
-        System.out.println(anArrayList);
-        sorter.sort(anArrayList);
-        System.out.println(anArrayList);
-        anArrayList.get(0).eat(49);
-        anArrayList.get(0).eat(49);
-        anArrayList.get(0).eat(49);
-        anArrayList.get(0).eat(49);
-        anArrayList.get(0).eat(49);
-        anArrayList.get(0).eat(49);
-        sorter.sort(anArrayList);
-        System.out.println(anArrayList);
 
     }
 
